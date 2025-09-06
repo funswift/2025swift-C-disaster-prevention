@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { useRouter } from 'next/navigation'; // ページ遷移のためにインポート
 
 /* データと子コンポーネントをインポート */
-import questionsData from "@/data/questions.json";
+import questionsData from "data/questions.json";
 import RadioQuestion from "@/components/RadioQuestion";
 import CheckboxQuestion from "@/components/CheckboxQuestion";
 
