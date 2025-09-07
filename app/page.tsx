@@ -12,7 +12,7 @@ export default function Page() {
   <wbr />
   結果は全部で〇〇タイプあります
   <br />
-  <Link href="/posts/question">
+  <Link href="/questions">
           診断スタート！！！！！！（ここ押したらページ遷移）
     </Link>
 </div>
