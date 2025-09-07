@@ -7,6 +7,7 @@ import { useRouter } from 'next/navigation'; // ページ遷移のためにイ�
 import questionsData from "data/questions.json";
 import RadioQuestion from "@/components/RadioQuestion";
 import CheckboxQuestion from "@/components/CheckboxQuestion";
+import { calculatePreparedness } from "../../../data/calculate";
 
 /* コンポーネント名を Question から QuestionsPage に変更 */
 export default function QuestionsPage() {
@@ -30,6 +31,13 @@ export default function QuestionsPage() {
         // TODO: ここで集めた `answers` を使って診断ロジックを実行する
         // 例えば、診断結果をstateやlocalStorageに保存するなど
         
+        //診断ロジックを実行
+        const result = calculatePreparedness(answers);
+        console.log("診断結果:", result);
+
+        //結果を localStorage に保存（ページ遷移後に取り出す用）
+        localStorage.setItem("disasterResult", result);
+
         /* 診断ボタンが押されたら結果ページに遷移するように変更 */
         router.push('/posts/result'); 
     };
@@ -47,7 +55,7 @@ export default function QuestionsPage() {
                             key={question.id}
                             question={question.text}
                             options={question.options}
-                            questionName={question.name}
+                            questionName={question.id}
                             selectedValue={(answers[question.id] as string) || ''}
                             onValueChange={(value) => answerUpdate(question.id, value)}
                         />
