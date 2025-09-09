@@ -9,6 +9,9 @@ import RadioQuestion from "@/components/RadioQuestion";
 import CheckboxQuestion from "@/components/CheckboxQuestion";
 import { calculatePreparedness } from "../../../data/calculate";
 
+import SingleChoiceQuestion from "@/components/SingleChoiceQuestion";
+import MultipleChoiceQuestion from "@/components/MultipleChoiceQuestion";
+
 /* コンポーネント名を Question から QuestionsPage に変更 */
 export default function QuestionsPage() {
     /* routerオブジェクトを取得 */
