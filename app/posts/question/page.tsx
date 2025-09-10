@@ -36,7 +36,9 @@ export default function QuestionsPage() {
         console.log("診断結果:", result);
 
         //結果を localStorage に保存（ページ遷移後に取り出す用）
-        localStorage.setItem("disasterResult", result);
+        //localStorage.setItem("disasterResult", result);
+        localStorage.setItem("disasterResult", JSON.stringify(result));
+
 
         /* 診断ボタンが押されたら結果ページに遷移するように変更 */
         router.push('/posts/result'); 
