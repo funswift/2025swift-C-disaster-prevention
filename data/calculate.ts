@@ -21,8 +21,8 @@ export function calculatePreparedness(answers: Answers): PreparednessResult {
   // 優先順位つきの判定リスト
   const checks = [
     { key: "q1", condition: answers["q1"] === "no", image: "/picture/q1.jpg" },
-    { key: "q2", condition: answers["q2"] === "no", image: "/picture/q1.jpg" },
-    { key: "q3", condition: answers["q3"] === "no", image: "/picture/q1.jpg" },
+    { key: "q2", condition: answers["q2"] === "no", image: "/picture/q2.jpg" },
+    { key: "q3", condition: answers["q3"] === "no", image: "/picture/q3.jpg" },
     { key: "q4", condition: answers["q4"] === "no", image: "/picture/q1.jpg" },
     { key: "stockpile", condition: stockpile <= 3, image: "/picture/q1.jpg" },
   ];
