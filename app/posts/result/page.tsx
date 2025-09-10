@@ -21,36 +21,42 @@ export default function Result() {
   }, []);
 
   return (
-    <div className="container py-5">
-      <h1 className="mb-4">あなたの診断結果</h1>
+    <div className="main-container">
+      <h1>あなたの診断結果</h1>
 
       {result ? (
         <>
           {/* メイン画像 */}
-          <div className="mb-4">
+          <div className="mb-4 flex justify-center">
             <Image
               src={result.main}
               alt="診断結果画像"
               width={1200}
               height={600}
-              style={{ width: "100%", height: "auto" }}
+              style={{ maxWidth: "80%", height: "auto" }}
             />
           </div>
 
           {/* サブ画像 */}
           {result.sub.length > 0 && (
-            <div>
-              <h2 className="mb-3">あなたには他にこのような傾向もあります</h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="text-center mb-6">
+              <h2 className="mb-4">あなたには他にこのような傾向もあります</h2>
+              <div className="flex flex-wrap justify-center gap-4">
                 {result.sub.map((img, i) => (
-                  <Image
-                    key={i}
-                    src={img}
-                    alt={`傾向${i + 1}`}
-                    width={600}
-                    height={400}
-                    style={{ width: "100%", height: "auto" }}
-                  />
+                  <div key={i} className="flex justify-center">
+                    <Image
+                      src={img}
+                      alt={`傾向${i + 1}`}
+                      width={300} // 小さめに調整
+                      height={200}
+                      style={{
+                        display: "block",
+                        width: "100%",
+                        maxWidth: "300px",
+                        height: "auto",
+                      }}
+                    />
+                  </div>
                 ))}
               </div>
             </div>
@@ -60,7 +66,7 @@ export default function Result() {
         <h2 className="mb-4">診断結果がありません</h2>
       )}
 
-      <a href="/" className="btn btn-secondary">
+      <a href="/" className="btn btn-secondary mt-4">
         ホームに戻る
       </a>
     </div>
