@@ -1,7 +1,7 @@
 "use client"
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
-export default function SingleChoiceQuestion({text, options, }: {text: string, options: string[]}){
+export default function SingleChoiceQuestion({text, options, callback}: {text: string, options: string[], callback: (choice:number) => void}){
 
 
     const baseClasses =
@@ -22,7 +22,7 @@ export default function SingleChoiceQuestion({text, options, }: {text: string, o
             className={`${baseClasses} ${
             index == choice ? selectedClasses : unselectedClasses
             }`}  
-            onClick={()=> {setChoice(index);} }
+            onClick={()=> {setChoice(index); callback(index);} }
             >
                 {option}
             </button>

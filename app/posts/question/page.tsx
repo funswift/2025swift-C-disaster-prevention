@@ -4,16 +4,13 @@ import React, { useState } from "react";
 import { useRouter } from 'next/navigation'; // ページ遷移のためにインポート
 
 /* データと子コンポーネントをインポート */
-import questionsData from "data/questions.json";
-import RadioQuestion from "@/components/RadioQuestion";
-import CheckboxQuestion from "@/components/CheckboxQuestion";
 import { calculatePreparedness } from "../../../data/calculate";
 
+import { Question, questionsData } from "data/questions";
 import SingleChoiceQuestion from "@/components/SingleChoiceQuestion";
 import MultipleChoiceQuestion from "@/components/MultipleChoiceQuestion";
 
-/* コンポーネント名を Question から QuestionsPage に変更 */
-export default function QuestionsPage() {
+export default function Page() {
     /* routerオブジェクトを取得 */
     const router = useRouter(); 
     
@@ -21,10 +18,11 @@ export default function QuestionsPage() {
     const [answers, setAnswers] = useState<{ [key: string]: string | string[] }>({});
 
     /* 回答が更新されたときに呼ばれる関数 */
-    const answerUpdate = (questionId: string, value: string | string[]) => {
+    const answerUpdate = (qsData: Question[], qsIndex: number, choiceIndex: number | number[]) => {
         setAnswers(prevAnswers => ({
             ...prevAnswers,
-            [questionId]: value
+            // qsDataと質問と回答のindexを使って キー:選択 を設定 回答indexは1始まりなので-1(0は未選択)
+            [qsData[qsIndex].question_name]: Array.isArray(choiceIndex) ? choiceIndex.map(i => qsData[qsIndex].options_name[i-1]) : qsData[qsIndex].options_name[choiceIndex - 1]
         }));
     };
 
@@ -50,33 +48,29 @@ export default function QuestionsPage() {
         <div className="container py-5">
             <h1 className="mb-4">防災診断</h1>
 
-            {/* JSONデータを元に質問を動的に生成するように変更 */}
-            {questionsData.map((question) => {
-                if (question.type === "radio") {
+            {questionsData.map((question, index) => {
+                if (question.type === 0) {
                     return (
-                        <RadioQuestion
-                            key={question.id}
-                            question={question.text}
+                        <SingleChoiceQuestion
+                            key={index}
+                            text={question.text}
                             options={question.options}
-                            questionName={question.id}
-                            selectedValue={(answers[question.id] as string) || ''}
-                            onValueChange={(value) => answerUpdate(question.id, value)}
-                        />
-                    );
-                } else if (question.type === "checkbox") {
+                            callback={(choice) => answerUpdate(questionsData, index, choice)}
+                            />
+                    )
+                } else if (question.type === 1) {
                     return (
-                        <CheckboxQuestion
-                            key={question.id}
-                            question={question.text}
+                        <MultipleChoiceQuestion
+                            key={index}
+                            text={question.text}
                             options={question.options}
-                            questionName={question.name}
-                            selectedValues={(answers[question.id] as string[]) || []}
-                            onValueChange={(values) => answerUpdate(question.id, values)}
-                        />
+                            callback={(choices) => answerUpdate(questionsData, index, choices)}
+                            />
                     );
                 }
                 return null;
             })}
+            <p>{JSON.stringify(answers)}</p>
 
             <div className="text-center mt-5">
                 {/* LinkをButtonに変更し、クリックでsubmit関数を呼ぶ */}

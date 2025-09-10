@@ -1,7 +1,7 @@
 "use client"
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
-export default function MultipleChoiceQuestion({text, options}: {text: string, options: string[]}){
+export default function MultipleChoiceQuestion({text, options, callback}: {text: string, options: string[], callback: (choice:number[]) => void}){
 
 
     const baseClasses =
@@ -23,7 +23,7 @@ export default function MultipleChoiceQuestion({text, options}: {text: string, o
             choices.includes(index) ? selectedClasses : unselectedClasses
             }`}  
             // setChoicesにindexが含まれていれば削除、含まれていなければ追加
-            onClick={()=> setChoices(choices.includes(index) ? choices.filter(i => i !== index) : [...choices, index]) }
+            onClick={()=> {const tmp = choices.includes(index) ? choices.filter(i => i !== index) : [...choices, index]; setChoices(tmp); callback(tmp);} }
             >
                 {option}
             </button>

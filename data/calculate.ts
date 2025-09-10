@@ -16,20 +16,20 @@ export function calculatePreparedness(answers: Answers): string {
     : 0;
 
 if (answers["q1"] === "no") {
-return "q1 がno　いざというときに連絡つかないタイプ";
+  return "/picture/323328_0.jpg";
 }
 else if (answers["q2"] === "no") {
-return "q2 がno　大切なものなくす";
+  return "/picture/323328_0.jpg";
 }
 else if (answers["q3"] === "no") {
-return "q3 がnoのタイプ";
+  return "/picture/323328_0.jpg";
 }
 else if (answers["q4"] === "no") {
-return "q4 がno　避難場所わからないタイプ";
+  return "/picture/323328_0.jpg";
 }
 else if (stockpile <= 3) {
-    return "備蓄少なめタイプ"
+    return "/picture/323328_0.jpg";
 }else{
-    return "パーフェクトです素晴らしい"
+    return "/picture/323328_0.jpg";
 }
 }

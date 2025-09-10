@@ -32,7 +32,7 @@ const RadioQuestion = ({ question, options, selectedValue, onValueChange, questi
                         className="form-check-input"
                         type="radio"
                         name={questionName}
-                        id={`${questionName}-${option.value}`}
+                        //id={`${questionName}-${option.value}`}
                         value={option.value}
                         checked={option.value === selectedValue}
                         onChange={changeValue}
