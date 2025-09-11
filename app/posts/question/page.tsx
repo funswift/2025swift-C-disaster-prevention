@@ -6,9 +6,10 @@ import { useRouter } from 'next/navigation'; // ページ遷移のためにイ�
 /* データと子コンポーネントをインポート */
 import { calculatePreparedness } from "../../../data/calculate";
 
-import { Question, questionsData } from "data/questions";
+import { Question, questions } from "data/questions";
 import SingleChoiceQuestion from "@/components/SingleChoiceQuestion";
 import MultipleChoiceQuestion from "@/components/MultipleChoiceQuestion";
+import { optimizeImage } from "next/dist/server/image-optimizer";
 
 export default function Page() {
     /* routerオブジェクトを取得 */
@@ -18,11 +19,10 @@ export default function Page() {
     const [answers, setAnswers] = useState<{ [key: string]: string | string[] }>({});
 
     /* 回答が更新されたときに呼ばれる関数 */
-    const answerUpdate = (qsData: Question[], qsIndex: number, choiceIndex: number | number[]) => {
+    const answerUpdate = (questionId: string, value: string | string[]) => {
         setAnswers(prevAnswers => ({
             ...prevAnswers,
-            // qsDataと質問と回答のindexを使って キー:選択 を設定 回答indexは1始まりなので-1(0は未選択)
-            [qsData[qsIndex].question_name]: Array.isArray(choiceIndex) ? choiceIndex.map(i => qsData[qsIndex].options_name[i-1]) : qsData[qsIndex].options_name[choiceIndex - 1]
+            [questionId]: value
         }));
     };
 
@@ -50,23 +50,23 @@ export default function Page() {
         <div className="container py-5">
             <h1 className="mb-4">防災診断</h1>
 
-            {questionsData.map((question, index) => {
-                if (question.type === 0) {
+            {questions.map((question, index) => {
+                if (question.type === "radio") {
                     return (
                         <SingleChoiceQuestion
                             key={index}
                             text={question.text}
                             options={question.options}
-                            callback={(choice) => answerUpdate(questionsData, index, choice)}
+                            callback={(value) => answerUpdate(question.id, value)}
                             />
                     )
-                } else if (question.type === 1) {
+                } else if (question.type === "checkbox") {
                     return (
                         <MultipleChoiceQuestion
                             key={index}
                             text={question.text}
                             options={question.options}
-                            callback={(choices) => answerUpdate(questionsData, index, choices)}
+                            callback={(value) => answerUpdate(question.id, value)}
                             />
                     );
                 }

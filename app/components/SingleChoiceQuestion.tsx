@@ -1,8 +1,13 @@
 "use client"
 import { useState } from "react";
 
-export default function SingleChoiceQuestion({text, options, callback}: {text: string, options: string[], callback: (choice:number) => void}){
+interface SingleChoiceQuestionProps {
+    text: string;
+    options: { label: string; value: string }[];
+    callback: (value: string) => void;
+}
 
+export default function SingleChoiceQuestion({text, options, callback}: SingleChoiceQuestionProps){
 
     const baseClasses =
         "px-4 py-2 rounded transition-colors duration-200";
@@ -22,9 +27,9 @@ export default function SingleChoiceQuestion({text, options, callback}: {text: s
             className={`${baseClasses} ${
             index == choice ? selectedClasses : unselectedClasses
             }`}  
-            onClick={()=> {setChoice(index); callback(index);} }
+            onClick={()=> {setChoice(index); callback(option.value);} }
             >
-                {option}
+                {option.label}
             </button>
         )
         )}

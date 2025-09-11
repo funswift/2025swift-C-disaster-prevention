@@ -1,47 +1,70 @@
 // questions.ts
-export type Question = {
-    type: number; // 0: single choice, 1: multiple choice
-    text: string;
-    options: string[];
-    question_name:string; // 得点計算ファイルで、識別子があった方が分かりやすいかもしれないので追加
-    options_name:string[];
+export type Option = {
+  label: string;
+  value: string;
 };
 
-export const questionsData: Question[] = [
+export type Question = {
+  id: string;
+  type: "radio" | "checkbox"; // ラジオ or 複数選択
+  name: string;
+  text: string;
+  options: Option[];
+};
+
+export const questions: Question[] = [
   {
-    type: 0,
+    id: "q1",
+    type: "radio",
+    name: "contact-method",
     text: "非常時の家族との連絡手段を決めていますか？",
-    options: ["はい", "いいえ"],
-    question_name: "q1",
-    options_name: ["yes","no"]
+    options: [
+      { label: "はい", value: "yes" },
+      { label: "いいえ", value: "no" },
+    ],
   },
-  {
-    type: 0,
+    {
+    id: "q2",
+    type: "radio",
+    name: "gathering-place",
     text: "連絡手段が断たれていた時の集合場所を決めていますか？",
-    options: ["はい", "いいえ"],
-    question_name: "q2",
-    options_name: ["yes","no"]
+    options: [
+      { label: "はい", value: "yes" },
+      { label: "いいえ", value: "no" },
+    ],
   },
   {
-    type: 0,
+    id: "q3",
+    type: "radio",
+    name: "document-storage",
     text: "マイナンバーカードなどの大切な書類の保管場所を共有していますか？",
-    options: ["はい", "いいえ"],
-    question_name: "q3",
-    options_name: ["yes","no"]
+    options: [
+      { label: "はい", value: "yes" },
+      { label: "いいえ", value: "no" },
+    ],
   },
   {
-    type: 0,
+    id: "q4",
+    type: "radio",
+    name: "evacuation-route",
     text: "避難場所とそこまでの経路を決めていますか？",
-    options: ["はい", "いいえ"],
-    question_name: "q4",
-    options_name: ["yes","no"]
+    options: [
+      { label: "はい", value: "yes" },
+      { label: "いいえ", value: "no" },
+    ],
   },
   {
-    type: 1,
+    id: "q5",
+    type: "checkbox",
+    name: "stockpile-items",
     text: "災害に備えて備蓄しているものを選択してください（複数選択可）",
-    options: ["食料", "水", "簡易トイレ", "医薬品","モバイルバッテリー"],
-    question_name: "stockpile-items",
-    options_name: ["food", "water", "toilet", "medicine","battery"]
+    options: [
+      { label: "食料", value: "food" },
+      { label: "水", value: "water" },
+      { label: "簡易トイレ", value: "toilet" },
+      { label: "医薬品", value: "medicine" },
+      { label: "モバイルバッテリー", value: "battery" },
+    ],
   },
 ];
 
