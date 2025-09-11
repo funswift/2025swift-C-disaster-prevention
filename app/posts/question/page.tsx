@@ -72,7 +72,6 @@ export default function Page() {
                 }
                 return null;
             })}
-            <p>{JSON.stringify(answers)}</p>
 
             <div className="text-center mt-5">
                 {/* LinkをButtonに変更し、クリックでsubmit関数を呼ぶ */}

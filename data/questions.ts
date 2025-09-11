@@ -9,31 +9,31 @@ export type Question = {
 
 export const questionsData: Question[] = [
   {
-  type: 0,
+    type: 0,
     text: "非常時の家族との連絡手段を決めていますか？",
     options: ["はい", "いいえ"],
-    question_name: "contact-method",
+    question_name: "q1",
     options_name: ["yes","no"]
   },
   {
     type: 0,
     text: "連絡手段が断たれていた時の集合場所を決めていますか？",
     options: ["はい", "いいえ"],
-    question_name: "gathering-place",
+    question_name: "q2",
     options_name: ["yes","no"]
   },
   {
     type: 0,
     text: "マイナンバーカードなどの大切な書類の保管場所を共有していますか？",
     options: ["はい", "いいえ"],
-    question_name: "document-storage",
+    question_name: "q3",
     options_name: ["yes","no"]
   },
   {
     type: 0,
     text: "避難場所とそこまでの経路を決めていますか？",
     options: ["はい", "いいえ"],
-    question_name: "evacuation-route",
+    question_name: "q4",
     options_name: ["yes","no"]
   },
   {
