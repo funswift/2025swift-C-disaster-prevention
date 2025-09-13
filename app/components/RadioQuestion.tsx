@@ -27,7 +27,7 @@ const RadioQuestion = ({ question, options, selectedValue, onValueChange, questi
         <div className="my-6 p-8 border rounded">
             <p className="fw-bold">{question}</p>
             {options.map(option => (
-                <div className="form-check" key={option.value}>
+                <div className="form-check d-block" key={option.value}>
                     <input
                         className="form-check-input"
                         type="radio"

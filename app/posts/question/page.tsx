@@ -75,7 +75,7 @@ export default function Page() {
 
             <div className="text-center mt-5">
                 {/* LinkをButtonに変更し、クリックでsubmit関数を呼ぶ */}
-                <button className="btn btn-primary btn-lg" onClick={submit}>
+                <button className="btn btn-warning btn-lg text-white" onClick={submit}>
                     診断結果を見る（ページ遷移）
                 </button>
             </div>
