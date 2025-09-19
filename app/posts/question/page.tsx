@@ -54,6 +54,7 @@ export default function Page() {
                 if (question.type === "radio") {
                     return (
                         <SingleChoiceQuestion
+                            id={question.id}
                             key={index}
                             text={question.text}
                             options={question.options}
