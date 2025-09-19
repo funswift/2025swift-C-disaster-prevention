@@ -20,6 +20,7 @@ export default function SingleChoiceQuestion({text, options, callback}: SingleCh
             <p className="fw-bold">{text}</p>
             <div className="flex flex-col gap-2">
                 {options.map((option, index) => (
+                    index++, // 初期を未選択状態にする
                     <button
                         key={index}
                         className={`btn ${index === choice ? 'btn-warning text-white' : 'btn-outline-secondary'}`}
