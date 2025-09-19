@@ -4,6 +4,28 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "./components/Footer";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import localFont from "next/font/local";
+
+const kiwiMaru = localFont({
+  src: [
+    {
+      path: "../public/fonts/KiwiMaru-Light.ttf",
+      weight: "300",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/KiwiMaru-Regular.ttf",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/KiwiMaru-Medium.ttf",
+      weight: "500",
+      style: "normal",
+    },
+  ],
+  display: "swap",
+});
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,7 +41,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja">
-      <body className={inter.className}>
+      <body className={kiwiMaru.className}>
         <Header />
         {/* 全ページ共通の外枠（CSSクラス使用） */}
         <main className="full-page-container">{children}</main>
