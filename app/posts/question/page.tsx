@@ -42,7 +42,7 @@ export default function Page() {
 
 
         /* 診断ボタンが押されたら結果ページに遷移するように変更 */
-        router.push('/posts/result'); 
+        router.push('/posts/result?main=' + encodeURIComponent(result.main) + '&sub=' + encodeURIComponent(result.sub ? result.sub.join(',') : '') ); 
     };
 
     /* classNameでデザインを変更可能（Bootstrapというものに定義されているCSS）*/
