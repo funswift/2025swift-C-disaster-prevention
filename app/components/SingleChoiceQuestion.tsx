@@ -24,7 +24,9 @@ export default function SingleChoiceQuestion({id, text, options, callback}: Sing
             <p className="font-bold text-2xl rounded p-4 bg-white">{text}</p>
             <div className="flex flex-col gap-2">
                 {options.map((option, index) => (
+
                     index++,
+
                     <button
                         key={index}
                         className={`${baseClasses} ${index === choice ? selectedClasses : unselectedClasses} font-bold !text-2xl`}
