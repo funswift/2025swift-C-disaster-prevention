@@ -41,7 +41,8 @@ export default function Page() {
         // localStorage.setItem("disasterResult", JSON.stringify(result));
 
 
-        /* 診断ボタンが押されたら結果ページに遷移する　その際クエリパラメータに診断結果ファイル名を付記 */
+        /* 診断ボタンが押されたら結果ページに遷移 */
+        /* その際クエリパラメータに診断結果ファイル名を付記 */
         const params = new URLSearchParams({ main: result.main, sub: result.sub ? result.sub.join(',') : '' });
         router.push('/posts/result?' + params.toString());
     };
