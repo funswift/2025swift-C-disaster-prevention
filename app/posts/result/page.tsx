@@ -38,7 +38,7 @@ export default function Result() {
           </div>
 
           {/* サブ画像 */}
-          {result.sub.length > 0 && (
+          {result.sub != null && result.sub.length > 0 && (
             <div className="text-center mb-6">
               <h2 className="mb-4">あなたには他にこのような傾向もあります</h2>
               <div className="flex flex-wrap justify-center gap-4">

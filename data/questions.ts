@@ -37,7 +37,7 @@ export const questions: Question[] = [
     id: "q3",
     type: "radio",
     name: "document-storage",
-    text: "マイナンバーカードなどの大切な書類の保管場所を共有していますか？",
+    text: "マイナンバーカード・通帳などの大切な書類の保管場所を家族と共有していますか？",
     options: [
       { label: "はい", value: "yes" },
       { label: "いいえ", value: "no" },
@@ -47,7 +47,7 @@ export const questions: Question[] = [
     id: "q4",
     type: "radio",
     name: "evacuation-route",
-    text: "避難場所とそこまでの経路を決めていますか？",
+    text: "災害の種類ごとの避難所とそこまでの経路を確認していますか？",
     options: [
       { label: "はい", value: "yes" },
       { label: "いいえ", value: "no" },
@@ -55,17 +55,29 @@ export const questions: Question[] = [
   },
   {
     id: "q5",
-    type: "checkbox",
-    name: "stockpile-items",
-    text: "災害に備えて備蓄しているものを選択してください（複数選択可）",
+    type: "radio",
+    name: "stock-items",
+    text: "水と食料を備蓄できていますか？",
     options: [
-      { label: "食料", value: "food" },
-      { label: "水", value: "water" },
-      { label: "簡易トイレ", value: "toilet" },
-      { label: "医薬品", value: "medicine" },
-      { label: "モバイルバッテリー", value: "battery" },
+      { label: "できている", value: "yes" },
+      { label: "できているがどれだけ必要かわからない", value: "no" },
+      { label: "できていない", value: "no"}
     ],
   },
+  
+  // {
+  //   id: "q5",
+  //   type: "checkbox",
+  //   name: "stockpile-items",
+  //   text: "災害に備えて備蓄しているものを選択してください（複数選択可）",
+  //   options: [
+  //     { label: "食料", value: "food" },
+  //     { label: "水", value: "water" },
+  //     { label: "簡易トイレ", value: "toilet" },
+  //     { label: "医薬品", value: "medicine" },
+  //     { label: "モバイルバッテリー", value: "battery" },
+  //   ],
+  // },
 ];
 
 // export interface Question {
