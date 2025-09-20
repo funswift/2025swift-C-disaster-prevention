@@ -2,13 +2,12 @@
 import { useState } from "react";
 
 interface SingleChoiceQuestionProps {
-    id: string;
     text: string;
     options: { label: string; value: string }[];
     callback: (value: string) => void;
 }
 
-export default function SingleChoiceQuestion({id, text, options, callback}: SingleChoiceQuestionProps){
+export default function SingleChoiceQuestion({text, options, callback}: SingleChoiceQuestionProps){
 
     const baseClasses = "px-8 py-4 rounded transition-colors duration-200";
     const selectedClasses = "bg-orange-300 text-white border-5 border-orange-500";
@@ -18,9 +17,6 @@ export default function SingleChoiceQuestion({id, text, options, callback}: Sing
 
     return(
    <div className="my-6 p-8 rounded">
-    <span className="flex justify-center items-center w-12 h-12 mx-auto bg-gray-200 rounded-full font-bold text-2xl">
-        {id}
-        </span>
             <p className="font-bold text-2xl rounded p-4 bg-white">{text}</p>
             <div className="flex flex-col gap-2">
                 {options.map((option, index) => (

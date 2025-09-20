@@ -4,8 +4,8 @@
 
 
 :root {
-  --background: #ffefd0f6;/*ページ背景変更*/
-  --foreground: #020202; /*文字色変更*/
+  --background: #F9F8F1;/*ページ背景変更*/
+  --foreground: #523B10; /*文字色変更*/
 }
 
 @theme inline {
