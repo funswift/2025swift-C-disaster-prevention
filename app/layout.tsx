@@ -3,7 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "./components/Footer";
-import 'bootstrap/dist/css/bootstrap.min.css';
+//import 'bootstrap/dist/css/bootstrap.min.css';
 import localFont from "next/font/local";
 
 const kiwiMaru = localFont({
@@ -41,7 +41,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja">
-      <body className={kiwiMaru.className}>
+      <body className={`${kiwiMaru.className} text-[#523B10]`}>
         <Header />
         {/* 全ページ共通の外枠（CSSクラス使用） */}
         <main className="full-page-container">{children}</main>
