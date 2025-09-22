@@ -1,8 +1,8 @@
-"use client"
+"use client";
 
 /* テスト */
 import React, { useState, useRef } from "react";
-import { useRouter } from 'next/navigation'; // ページ遷移のためにインポート
+import { useRouter } from "next/navigation"; // ページ遷移のためにインポート
 
 /* データと子コンポーネントをインポート */
 import { calculatePreparedness } from "../../../data/calculate";
@@ -148,15 +148,32 @@ export default function Page() {
                         )}
                     </div>
                 );
+              } else if (question.type === "checkbox") {
+                return (
+                  <MultipleChoiceQuestion
+                    // key={index} は親のdivに移動したので不要
+                    text={question.text}
+                    options={question.options}
+                    callback={(value) =>
+                      answerUpdate(question.id, value, question.type)
+                    }
+                  />
+                );
+              }
+              return null;
+            })()}
+          </div>
+        );
+      })}
 
-            })}
-
-            <div className="text-center mt-5">
-                {/* LinkをButtonに変更し、クリックでsubmit関数を呼ぶ */}
-                <button className="btn btn-warning btn-lg text-white" onClick={submit}>
-                    診断結果を見る（ページ遷移）
-                </button>
-            </div>
-        </div>
-    );
+      <div className="text-center mt-5 p-8">
+        <button
+          className="bg-[#FEAF71] border-[#CCBFA7] w-full py-3 px-6 rounded-full text-2xl"
+          onClick={submit}
+        >
+          診断結果へ→
+        </button>
+      </div>
+    </div>
+  );
 }

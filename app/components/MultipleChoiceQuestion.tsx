@@ -1,45 +1,42 @@
-"use client"
+"use client";
 import { useState } from "react";
 
 interface MultipleChoiceQuestionProps {
-    text: string;
-    options: { label: string; value: string }[];
-    callback: (value: string[]) => void;
+  text: string;
+  options: { label: string; value: string }[];
+  callback: (value: string[]) => void;
 }
 
-export default function MultipleChoiceQuestion({text, options, callback}: MultipleChoiceQuestionProps){
+export default function MultipleChoiceQuestion({
+  text,
+  options,
+  callback,
+}: MultipleChoiceQuestionProps) {
+  const baseClasses = "px-8 py-4 rounded transition-colors duration-200";
+  const selectedClasses = "bg-[#FEAF71] border-3 border-[#CCBFA7]";
+  const unselectedClasses = "bg-[#FFFFFF] border-3 border-[#CCBFA7]";
+  const [choices, setChoices] = useState<number[]>([]);
 
-    //const baseClasses ="px-4 py-2 rounded transition-colors duration-200";
-    //const selectedClasses = "bg-blue-500 text-white";
-    //const unselectedClasses = "bg-gray-200 text-black";
-
-    const [choices, setChoices] = useState<number[]>([]);
-
-    return(
-    <div className="my-6 p-8 border rounded">
-            <p className="fw-bold">{text}</p>
-            <div className="d-grid gap-2"> {/* Bootstrapのグリッドレイアウトで縦並びに */}
-                {options.map((option, index) => (
-                    <button
-                        key={index}
-                        // ここでBootstrapのクラスを使用
-                        className={`btn ${
-                            choices.includes(index)
-                                ? 'btn-warning text-white' // 選択時はオレンジ（warning）
-                                : 'btn-outline-secondary'  // 未選択時はアウトラインのグレー
-                        }`}
-                        onClick={() => {
-                            const tmp = choices.includes(index)
-                                ? choices.filter(i => i !== index)
-                                : [...choices, index];
-                            setChoices(tmp);
-                            callback(tmp.map(i => options[i].value));
-                        }}
-                    >
-                        {option.label}
-                    </button>
-                ))}
-            </div>
-        </div>
-    )
+  return (
+    <div className="my-6 p-4 rounded flex flex-col">
+      <p className="text-3xl p-4">{text}</p>
+      <div className="p-4 flex flex-col gap-2 items-center w-full">
+        {options.map((option, index) => (
+          <button
+            key={index}
+                className={`${baseClasses} ${choices.includes(index) ? selectedClasses : unselectedClasses} rounded-lg !text-2xl w-full items-center`}
+            onClick={() => {
+              const tmp = choices.includes(index)
+                ? choices.filter((i) => i !== index)
+                : [...choices, index];
+              setChoices(tmp);
+              callback(tmp.map((i) => options[i].value));
+            }}
+          >
+            {option.label}
+          </button>
+        ))}
+      </div>
+    </div>
+  );
 }

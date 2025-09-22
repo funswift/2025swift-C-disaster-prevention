@@ -29,7 +29,17 @@ export default function Result() {
 
   return (
     <div className="main-container">
-      <h1>あなたの診断結果</h1>
+      <header className="bg-[F9F8F1] text-center">
+        <div className="flex justify-center items-center p-10">
+          <Image
+            src="/picture/result_head.png"
+            alt="icon"
+            width={1200}
+            height={400}
+            className="w-full h-auto object-contain"
+          />
+        </div>
+      </header>
 
       {result ? (
         <>
@@ -49,7 +59,8 @@ export default function Result() {
           {result.sub != null && result.sub.length > 0 && (
            
             <div className="text-center mb-6">
-              <h2 className="mb-4">あなたには他にこのような傾向もあります</h2>
+              <br />
+              <h2 className="text-center text-2xl p-8">他の行動タイプ</h2>
               <div className="flex flex-wrap justify-center gap-4">
                 {result.sub.map((img, i) => (
                   <div key={i} className="flex justify-center">
@@ -75,6 +86,16 @@ export default function Result() {
         <h2 className="mb-4">診断結果がありません</h2>
       )}
 
+      <div className="text-center mt-5 p-8">
+        <button
+          className="bg-[#FEAF71] border-[#CCBFA7] w-full py-3 px-6 rounded-full text-2xl"
+          onClick={() => {
+            window.location.href = "/posts/question";
+          }}
+        >
+          診断画面へ→
+        </button>
+      </div>
       <a href="/" className="btn btn-secondary mt-4">
         ホームに戻る
       </a>
