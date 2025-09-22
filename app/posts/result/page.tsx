@@ -60,7 +60,7 @@ export default function Result() {
            
             <div className="text-center mb-6">
               <br />
-              <h2 className="text-center text-2xl p-8">他の行動タイプ</h2>
+              <h2 className="text-center text-4xl p-12">他の行動タイプ</h2>
               <div className="flex flex-wrap justify-center gap-4">
                 {result.sub.map((img, i) => (
                   <div key={i} className="flex justify-center">
@@ -72,7 +72,7 @@ export default function Result() {
                       style={{
                         display: "block",
                         width: "100%",
-                        maxWidth: "300px",
+                        maxWidth: "500px",
                         height: "auto",
                       }}
                     />
