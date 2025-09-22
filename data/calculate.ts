@@ -14,8 +14,8 @@ export function calculatePreparedness(answers: Answers): PreparednessResult {
     if (answers[key] === "yes") yesCount++;
   });
 
-  const stockpile = Array.isArray(answers["stockpile-items"])
-    ? answers["stockpile-items"].length
+  const stockpile = Array.isArray(answers["q5"])
+    ? answers["q5"].length
     : 0;
 
   // 優先順位つきの判定リスト
