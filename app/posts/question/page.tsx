@@ -110,70 +110,56 @@ export default function Page() {
     };
 
     /* classNameでデザインを変更可能（Bootstrapというものに定義されているCSS）*/
-    return (
-        <div className="container py-5">
-            <h1 className="mb-4">防災診断</h1>
+return (
+  <div className="container py-5">
+    <h1 className="mb-4">防災診断</h1>
 
-            {questions.map((question, index) => {
-          
-                // このdivがスクロールのターゲットになる
-                return (
-                    <div key={question.id} ref={el => {questionRefs.current[index] = el}}>
-                        {(() => {
-                            if (question.type === "radio") {
-                                return (
-                                    <SingleChoiceQuestion
-                                        text={question.text}
-                                        options={question.options}
-                                        callback={(value) => answerUpdate(question.id, value, question.type)}
-                                    />
-                                );
-                            } else if (question.type === "checkbox") {
-                                return (
-                                    <MultipleChoiceQuestion
-                                        text={question.text}
-                                        options={question.options}
-                                        callback={(value) => answerUpdate(question.id, value, question.type)}
-                                    />
-                                );
-                            }
-                            return null;
-                        })()}
+    {/* mapメソッドで各質問をループ表示 */}
+    {questions.map((question, index) => {
+      // このdivがスクロールのターゲットになる
+      return (
+        <div key={question.id} ref={(el) => { questionRefs.current[index] = el; }}>
+          {/* 即時実行関数を使って、question.typeによって表示するコンポーネントを切り替える */}
+          {(() => {
+            if (question.type === "radio") {
+              return (
+                <SingleChoiceQuestion
+                  text={question.text}
+                  options={question.options}
+                  callback={(value) => answerUpdate(question.id, value, question.type)}
+                />
+              );
+            } else if (question.type === "checkbox") {
+              return (
+                <MultipleChoiceQuestion
+                  text={question.text}
+                  options={question.options}
+                  callback={(value) => answerUpdate(question.id, value, question.type)}
+                />
+              );
+            }
+            return null; // 'radio'でも'checkbox'でもない場合は何も表示しない
+          })()}
 
-                        {/* エラーメッセージの表示 */}
-                        {errors[question.id] && (
-                            <p className="text-danger mt-2 fw-bold">
-                                {errors[question.id]}
-                            </p>
-                        )}
-                    </div>
-                );
-              } else if (question.type === "checkbox") {
-                return (
-                  <MultipleChoiceQuestion
-                    // key={index} は親のdivに移動したので不要
-                    text={question.text}
-                    options={question.options}
-                    callback={(value) =>
-                      answerUpdate(question.id, value, question.type)
-                    }
-                  />
-                );
-              }
-              return null;
-            })()}
-          </div>
-        );
-      })}
+          {/* エラーメッセージの表示 */}
+          {errors[question.id] && (
+            <p className="text-danger mt-2 fw-bold">
+              {errors[question.id]}
+            </p>
+          )}
+        </div>
+      );
+    })}
 
-      <div className="text-center mt-5 p-8">
-        <button
-          className="bg-[#FEAF71] border-[#CCBFA7] w-full py-3 px-6 rounded-full text-2xl"
-          onClick={submit}
-        >
-          診断結果へ→
-        </button>
-      </div>
+    {/* ↓↓↓ このボタンは map のループの外に配置する ↓↓↓ */}
+    <div className="text-center mt-5 p-8">
+      <button
+        className="bg-[#FEAF71] border-[#CCBFA7] w-full py-3 px-6 rounded-full text-2xl"
+        onClick={submit}
+      >
+        診断結果へ→
+      </button>
     </div>
-  );
+  </div>
+);
 }
