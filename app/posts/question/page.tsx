@@ -112,8 +112,7 @@ export default function Page() {
     /* classNameでデザインを変更可能（Bootstrapというものに定義されているCSS）*/
 return (
   <div className="container py-5">
-    <h1 className="mb-4">防災診断</h1>
-
+  
     {/* mapメソッドで各質問をループ表示 */}
     {questions.map((question, index) => {
       // このdivがスクロールのターゲットになる
