@@ -121,7 +121,6 @@ export default function Page() {
                             if (question.type === "radio") {
                                 return (
                                     <SingleChoiceQuestion
-                                        // key={index} は親のdivに移動したので不要
                                         text={question.text}
                                         options={question.options}
                                         callback={(value) => answerUpdate(question.id, value, question.type)}
@@ -130,7 +129,6 @@ export default function Page() {
                             } else if (question.type === "checkbox") {
                                 return (
                                     <MultipleChoiceQuestion
-                                        // key={index} は親のdivに移動したので不要
                                         text={question.text}
                                         options={question.options}
                                         callback={(value) => answerUpdate(question.id, value, question.type)}
