@@ -99,10 +99,13 @@ export default function Page() {
 
         //結果を localStorage に保存（ページ遷移後に取り出す用）
         //localStorage.setItem("disasterResult", result);
-        localStorage.setItem("disasterResult", JSON.stringify(result));
+        // localStorage.setItem("disasterResult", JSON.stringify(result));
 
         /* 診断ボタンが押されたら結果ページに遷移 */
-        router.push('/posts/result');
+        /* その際クエリパラメータに診断結果ファイル名を付記 */
+        const params = new URLSearchParams({ main: result.main, sub: result.sub ? result.sub.join(',') : '' });
+        router.push('/posts/result?' + params.toString());
+
     };
 
     /* classNameでデザインを変更可能（Bootstrapというものに定義されているCSS）*/
