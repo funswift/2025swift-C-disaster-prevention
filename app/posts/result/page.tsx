@@ -63,7 +63,7 @@ export default function Result() {
                       style={{
                         display: "block",
                         width: "100%",
-                        maxWidth: "300px",
+                        maxWidth: "500px",
                         height: "auto",
                       }}
                     />

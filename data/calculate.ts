@@ -37,7 +37,15 @@ export function calculatePreparedness(answers: Answers): PreparednessResult {
         main = check.image;
       } else if (check.image !== main) {
         // それ以外はサブに追加
-        sub.push(check.image);
+        //sub.push(check.image);
+        const subImageMap: Record<string, string> = {
+        "/picture/result_picture/type1.png": "/picture/result_picture/mini_type1.png",
+        "/picture/result_picture/type2.png": "/picture/result_picture/mini_type2.png",
+        "/picture/result_picture/type3.png": "/picture/result_picture/mini_type3.png",
+        "/picture/result_picture/type4.png": "/picture/result_picture/mini_type4.png",
+        "/picture/result_picture/type5.png": "/picture/result_picture/mini_type5.png",
+      };
+      sub.push(subImageMap[check.image] ?? check.image);
       }
     }
   }
