@@ -114,6 +114,7 @@ export default function Page() {
             <h1 className="mb-4">防災診断</h1>
 
             {questions.map((question, index) => {
+          
                 // このdivがスクロールのターゲットになる
                 return (
                     <div key={question.id} ref={el => {questionRefs.current[index] = el}}>
@@ -146,6 +147,7 @@ export default function Page() {
                         )}
                     </div>
                 );
+
             })}
 
             <div className="text-center mt-5">
