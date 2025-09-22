@@ -17,14 +17,14 @@ export default function SingleChoiceQuestion({text, options, callback}: SingleCh
     const [choice, setChoice] = useState<number>(0);
 
     return(
-   <div className="my-6 p-4 rounded flex flex-col">
+   <div className="p-4 my-6 rounded flex flex-col">
             <p className="text-3xl p-4">{text}</p>
-            <div className="p-4 flex flex-col gap-2 items-center">
+            <div className="p-4 flex flex-col gap-2">
                 {options.map((option, index) => (
                     index++, // indexを1から始める, 0は未選択状態
                     <button
                         key={index}
-                        className={`${baseClasses} ${index === choice ? selectedClasses : unselectedClasses} rounded-lg !text-2xl w-full items-center`}
+                        className={`${baseClasses} ${index === choice ? selectedClasses : unselectedClasses} rounded-lg !text-2xl !w-full`}
                         onClick={() => { setChoice(index); callback(option.value); }}
                     >
                         {option.label}

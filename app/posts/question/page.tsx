@@ -111,7 +111,7 @@ export default function Page() {
 
     /* classNameでデザインを変更可能（Bootstrapというものに定義されているCSS）*/
 return (
-  <div className="container py-5">
+  <div className="py-4">
   
     {/* mapメソッドで各質問をループ表示 */}
     {questions.map((question, index) => {
