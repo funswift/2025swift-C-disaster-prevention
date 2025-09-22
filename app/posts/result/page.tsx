@@ -1,23 +1,30 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,} from "react";
+import { useSearchParams } from "next/navigation";
 import Image from "next/image";
 import type { PreparednessResult } from "data/calculate"; // ここは保存先に合わせて修正
 
 export default function Result() {
   const [result, setResult] = useState<PreparednessResult | null>(null);
+  const searchParams = useSearchParams();
 
   useEffect(() => {
     // localStorage から診断結果を取得
-    const storedResult = localStorage.getItem("disasterResult");
-    if (storedResult) {
-      try {
-        const parsed: PreparednessResult = JSON.parse(storedResult);
-        setResult(parsed);
-      } catch (e) {
-        console.error("診断結果のパースに失敗しました:", e);
-      }
-    }
+    // const storedResult = localStorage.getItem("disasterResult");
+    // if (storedResult) {
+    //   try {
+    //     const parsed: PreparednessResult = JSON.parse(storedResult);
+    //     setResult(parsed);
+    //   } catch (e) {
+    //     console.error("診断結果のパースに失敗しました:", e);
+    //   }
+    // }
+    const mainParameter = searchParams.get('main') ;
+    const subParameter = searchParams.get('sub') ;
+    setResult({ main: mainParameter ? mainParameter : '', sub: subParameter ? subParameter.split(',') : [] });
+    console.log("mainParameter", mainParameter);
+
   }, []);
 
   return (
@@ -48,7 +55,9 @@ export default function Result() {
           </div>
 
           {/* サブ画像 */}
-          {result.sub.length > 0 && (
+
+          {result.sub != null && result.sub.length > 0 && (
+           
             <div className="text-center mb-6">
               <br />
               <h2 className="text-center text-2xl p-8">他の行動タイプ</h2>
