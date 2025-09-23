@@ -45,7 +45,7 @@ export function calculatePreparedness(answers: Answers): PreparednessResult {
     },
     {
       key: "stockpile",
-      condition: stockpile <= 3,
+      condition: answers["q5"] === "no",
       image: "/picture/result_picture/type5.png",
     },
   ];
@@ -78,7 +78,7 @@ export function calculatePreparedness(answers: Answers): PreparednessResult {
   }
 
   return {
-    main: main ?? "/picture/q1.jpg", // 全部OKならデフォルト画像
+    main: main ?? "/picture/result_picture/type6.png", // 全部OKならデフォルト画像
     sub,
   };
 }
