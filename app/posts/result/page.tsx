@@ -4,6 +4,7 @@ import React, { useEffect, useState, useRef} from "react";
 import { useSearchParams } from "next/navigation";
 import Image from "next/image";
 import type { PreparednessResult } from "data/calculate"; // ここは保存先に合わせて修正
+import Link from "next/link";
 
 export default function Result() {
   const searchParams = useSearchParams();
@@ -101,9 +102,9 @@ export default function Result() {
           診断画面へ→
         </button>
       </div>
-      <a href="/" className="btn btn-secondary mt-4">
+      <Link href="/" className="btn btn-secondary mt-4">
         ホームに戻る
-      </a>
+      </Link>
     </div>
   );
 }
