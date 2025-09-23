@@ -142,7 +142,7 @@ return (
 
           {/* エラーメッセージの表示 */}
           {errors[question.id] && (
-            <p className="text-danger mt-2 fw-bold">
+            <p className="text-red-600 mt-2 font-bold px-4">
               {errors[question.id]}
             </p>
           )}
