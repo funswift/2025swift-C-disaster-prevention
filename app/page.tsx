@@ -14,7 +14,7 @@ export default function Page() {
   <br />
   <Link href="/posts/question">
           診断スタート！！！！！！（ここ押したらページ遷移）
-    </Link>
+  </Link>
 </div>
 </main>    
   );
