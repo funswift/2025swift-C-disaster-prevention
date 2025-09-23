@@ -8,7 +8,7 @@ const Footer = () => {
   return (
     <footer className='bg-[#CCBFA7] text-center py-8'>
       <Link href="/posts/references">
-        参考文献はこちら（ここ押したらページ遷移）
+        参考文献はこちらをクリックしてください
       </Link>
 
     </footer>
