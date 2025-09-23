@@ -1,13 +1,13 @@
 "use client";
 
-import React, { useEffect, useState,} from "react";
+import React, { useEffect, useState, useRef} from "react";
 import { useSearchParams } from "next/navigation";
 import Image from "next/image";
 import type { PreparednessResult } from "data/calculate"; // ここは保存先に合わせて修正
 
 export default function Result() {
-  const [result, setResult] = useState<PreparednessResult | null>(null);
   const searchParams = useSearchParams();
+  const targetRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     // localStorage から診断結果を取得
@@ -20,17 +20,22 @@ export default function Result() {
     //     console.error("診断結果のパースに失敗しました:", e);
     //   }
     // }
-    const mainParameter = searchParams.get('main') ;
-    const subParameter = searchParams.get('sub') ;
-    setResult({ main: mainParameter ? mainParameter : '', sub: subParameter ? subParameter.split(',') : [] });
-    console.log("mainParameter", mainParameter);
+
+    // ページが表示されたらスクロール
+    targetRef.current?.scrollIntoView({ behavior: "smooth" });
+
 
   }, []);
+
+    const mainParameter = searchParams.get('main') ;
+    const subParameter = searchParams.get('sub') ;
+    const result = { main: mainParameter ? mainParameter : '', sub: subParameter ? subParameter.split(',') : [] };
+    console.log("mainParameter", mainParameter);
 
   return (
     <div className="main-container">
       <header className="bg-[F9F8F1] text-center">
-        <div className="flex justify-center items-center p-10">
+        <div className="flex justify-center items-center p-10"  ref={targetRef}>
           <Image
             src="/picture/result_head.png"
             alt="icon"
