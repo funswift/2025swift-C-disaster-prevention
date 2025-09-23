@@ -23,18 +23,8 @@ export const questions: Question[] = [
       { label: "いいえ", value: "no" },
     ],
   },
-    {
-    id: "q2",
-    type: "radio",
-    name: "gathering-place",
-    text: "連絡手段が断たれていた時の集合場所を決めていますか？",
-    options: [
-      { label: "はい", value: "yes" },
-      { label: "いいえ", value: "no" },
-    ],
-  },
   {
-    id: "q3",
+    id: "q2",
     type: "radio",
     name: "document-storage",
     text: "マイナンバーカード・通帳などの大切な書類の保管場所を家族と共有していますか？",
@@ -44,10 +34,20 @@ export const questions: Question[] = [
     ],
   },
   {
-    id: "q4",
+    id: "q3",
     type: "radio",
     name: "evacuation-route",
     text: "災害の種類ごとの避難所とそこまでの経路を確認していますか？",
+    options: [
+      { label: "はい", value: "yes" },
+      { label: "いいえ", value: "no" },
+    ],
+  },
+  {
+    id: "q4",
+    type: "radio",
+    name: "gathering-place",
+    text: "連絡手段が断たれていた時の集合場所を決めていますか？",
     options: [
       { label: "はい", value: "yes" },
       { label: "いいえ", value: "no" },
