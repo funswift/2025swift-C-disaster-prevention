@@ -1,12 +1,11 @@
 "use client";
 
-import React, { useEffect, useState,} from "react";
+import React, { useEffect, useState, useRef} from "react";
 import { useSearchParams } from "next/navigation";
 import Image from "next/image";
 import type { PreparednessResult } from "data/calculate"; // ここは保存先に合わせて修正
 
 export default function Result() {
-  const [result, setResult] = useState<PreparednessResult | null>(null);
   const searchParams = useSearchParams();
 
   useEffect(() => {
@@ -20,12 +19,14 @@ export default function Result() {
     //     console.error("診断結果のパースに失敗しました:", e);
     //   }
     // }
-    const mainParameter = searchParams.get('main') ;
-    const subParameter = searchParams.get('sub') ;
-    setResult({ main: mainParameter ? mainParameter : '', sub: subParameter ? subParameter.split(',') : [] });
-    console.log("mainParameter", mainParameter);
+
 
   }, []);
+
+    const mainParameter = searchParams.get('main') ;
+    const subParameter = searchParams.get('sub') ;
+    const result = { main: mainParameter ? mainParameter : '', sub: subParameter ? subParameter.split(',') : [] };
+    console.log("mainParameter", mainParameter);
 
   return (
     <div className="main-container">
