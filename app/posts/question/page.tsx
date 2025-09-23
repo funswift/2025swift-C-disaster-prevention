@@ -159,6 +159,10 @@ return (
         診断結果へ→
       </button>
     </div>
+    <a href="/" className="btn btn-secondary mt-4">
+        ホームに戻る
+      </a>
   </div>
+  
 );
 }
