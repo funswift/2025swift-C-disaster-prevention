@@ -7,6 +7,7 @@ import type { PreparednessResult } from "data/calculate"; // ここは保存先�
 
 export default function Result() {
   const searchParams = useSearchParams();
+  const targetRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     // localStorage から診断結果を取得
@@ -20,6 +21,9 @@ export default function Result() {
     //   }
     // }
 
+    // ページが表示されたらスクロール
+    targetRef.current?.scrollIntoView({ behavior: "smooth" });
+
 
   }, []);
 
@@ -31,7 +35,7 @@ export default function Result() {
   return (
     <div className="main-container">
       <header className="bg-[F9F8F1] text-center">
-        <div className="flex justify-center items-center p-10">
+        <div className="flex justify-center items-center p-10"  ref={targetRef}>
           <Image
             src="/picture/result_head.png"
             alt="icon"
