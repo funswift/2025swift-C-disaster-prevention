@@ -5,6 +5,7 @@ import React, { useEffect, useState, useRef} from "react";
 import { useSearchParams } from "next/navigation";
 import Image from "next/image";
 import type { PreparednessResult } from "data/calculate"; // ここは保存先に合わせて修正
+import { typeToPath } from "data/calculate";
 
 export default function Result() {
   const searchParams = useSearchParams();
@@ -28,10 +29,10 @@ export default function Result() {
 
   }, []);
 
-    const mainParameter = searchParams.get('main') ;
-    const subParameter = searchParams.get('sub') ;
-    const result = { main: mainParameter ? mainParameter : '', sub: subParameter ? subParameter.split(',') : [] };
-    console.log("mainParameter", mainParameter);
+    const main = searchParams.get('main') ;
+    const sub = searchParams.get('sub') ;
+    const result = { main: main ? typeToPath[main] : '', sub: sub ? sub.split(',').map((v) => typeToPath[v]) : [] };
+    console.log("mainParameter", main);
 
   return (
     <div className="main-container">

@@ -14,11 +14,11 @@ export const typeToPath: Record<string, string> = {
   type4: "/picture/result_picture/type4.png",
   type5: "/picture/result_picture/type5.png",
   type6: "/picture/result_picture/type6.png",
-  miniType1: "/picture/result_picture/mini_type1.png",
-  miniType2: "/picture/result_picture/mini_type2.png",
-  miniType3: "/picture/result_picture/mini_type3.png",
-  miniType4: "/picture/result_picture/mini_type4.png",
-  miniType5: "/picture/result_picture/mini_type5.png",
+  mini_type1: "/picture/result_picture/mini_type1.png",
+  mini_type2: "/picture/result_picture/mini_type2.png",
+  mini_type3: "/picture/result_picture/mini_type3.png",
+  mini_type4: "/picture/result_picture/mini_type4.png",
+  mini_type5: "/picture/result_picture/mini_type5.png",
 };
 
 
