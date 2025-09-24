@@ -56,7 +56,7 @@ export default function Page() {
                     setTimeout(() => {
                         nextQuestionEl.scrollIntoView({
                             behavior: 'smooth',
-                            block: 'start',
+                            block: 'center',
                         });
                     }, 200); // 0.2秒のディレイ
                 }
