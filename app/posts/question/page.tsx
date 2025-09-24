@@ -1,6 +1,6 @@
 "use client";
 
-
+import Link from 'next/link';
 import React, { useState, useRef } from "react";
 import { useRouter } from "next/navigation"; // ページ遷移のためにインポート
 
@@ -159,9 +159,9 @@ return (
         診断結果へ→
       </button>
     </div>
-    <a href="/" className="btn btn-secondary mt-4">
-        ホームに戻る
-      </a>
+    <Link href="/" className="btn btn-secondary mt-4">
+      ホームに戻る
+    </Link>
   </div>
   
 );
