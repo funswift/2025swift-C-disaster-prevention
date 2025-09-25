@@ -62,15 +62,15 @@ export function calculatePreparedness(answers: Answers): PreparednessResult {
         //sub.push(check.image);
         const subImageMap: Record<string, string> = {
           "/picture/result_picture/type1.png":
-            "/picture/result_picture/mini_type1.png",
+            "/picture/result_picture/mini-type1.png",
           "/picture/result_picture/type2.png":
-            "/picture/result_picture/mini_type2.png",
+            "/picture/result_picture/mini-type2.png",
           "/picture/result_picture/type3.png":
-            "/picture/result_picture/mini_type3.png",
+            "/picture/result_picture/mini-type3.png",
           "/picture/result_picture/type4.png":
-            "/picture/result_picture/mini_type4.png",
+            "/picture/result_picture/mini-type4.png",
           "/picture/result_picture/type5.png":
-            "/picture/result_picture/mini_type5.png",
+            "/picture/result_picture/mini-type5.png",
         };
         sub.push(subImageMap[check.image] ?? check.image);
       }
