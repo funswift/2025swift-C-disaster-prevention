@@ -1,7 +1,7 @@
 "use client";
 
-import Link from 'next/link';
-import React, { useEffect, useState, useRef} from "react";
+import Link from "next/link";
+import React, { useEffect, useState, useRef } from "react";
 import { useSearchParams } from "next/navigation";
 import Image from "next/image";
 import type { PreparednessResult } from "data/calculate"; // ここは保存先に合わせて修正
@@ -25,8 +25,6 @@ export default function Result() {
 
     // ページが表示されたらスクロール
     targetRef.current?.scrollIntoView({ behavior: "smooth" });
-
-
   }, []);
 
     const main = searchParams.get('main') ;
@@ -34,10 +32,11 @@ export default function Result() {
     const result = { main: main ? typeToPath[main] : '', sub: sub ? sub.split(',').map((v) => typeToPath[v]) : [] };
     console.log("mainParameter", main);
 
+
   return (
     <div className="main-container">
       <header className="bg-[F9F8F1] text-center">
-        <div className="flex justify-center items-center p-10"  ref={targetRef}>
+        <div className="flex justify-center items-center p-10" ref={targetRef}>
           <Image
             src="/picture/result_head.png"
             alt="icon"
@@ -64,10 +63,12 @@ export default function Result() {
           {/* サブ画像 */}
 
           {result.sub != null && result.sub.length > 0 && (
-           
             <div className="text-center mb-6">
               <br />
-              <h2 className="text-center text-4xl p-12">他の行動タイプ</h2>
+              <h2 className="text-center text-4xl p-12">
+                あなたは他にこのような傾向があります<br />
+                これらを解決して完璧を目指そう！！
+              </h2>
               <div className="flex flex-wrap justify-center gap-4">
                 {result.sub.map((img, i) => (
                   <div key={i} className="flex justify-center">
