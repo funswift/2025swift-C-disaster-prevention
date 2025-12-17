@@ -77,6 +77,7 @@ export function calculatePreparedness(answers: Answers): PreparednessResult {
       } else if (check.image !== main) {
         //sub.push(check.image);
         const subImageMap: Record<string, string> = {
+
           "type1":
             "mini_type1",
           "type2":
