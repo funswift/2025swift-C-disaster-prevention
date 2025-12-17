@@ -6,11 +6,8 @@ import styles from './Footer.module.css'
 
 const Footer = () => {
   return (
-    <footer className='bg-[#CCBFA7] text-center py-8'>
-      <Link href="/posts/references">
-        参考文献はこちらをクリックしてください
-      </Link>
-
+    <footer className='bg-[#CCBFA7] text-center py-8 text-xl'>
+      <p>公立はこだて未来大学 すうぃふと2025防災グループ</p>
     </footer>
   );
 }
